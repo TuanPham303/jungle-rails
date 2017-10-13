@@ -1,11 +1,11 @@
-<section class="orders-show">
-
-  <header class="page-header">
-    <h1>Order <%= @order.id %></h1>
-  </header>
-
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your money, <%= current_user.try(:email) %>!</h4>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div class="order-summary jumbotron">
+    <h4>Thank you for your money, <%= @user.try(:name) %>!</h4>
     <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
@@ -17,8 +17,9 @@
           </tr>
         </thead>
         <tbody>
+          <% @order_total = 0 %>
           <% @order.line_items.each do |item| %>
-            <%= render 'item', item: item %>
+            <%= render 'orders/item', item: item %>
           <% end %>
         </tbody>
         <tfoot>
@@ -27,7 +28,7 @@
               TOTAL:
             </th>
             <th>
-              <%= @order.order_total %>
+              <%= @order_total %>
             </th>
           </tr>
         </tfoot>
@@ -35,6 +36,5 @@
     </div>
   </div>
 
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
-
-</section>
+  </body>
+</html>

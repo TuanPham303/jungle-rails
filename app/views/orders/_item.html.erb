@@ -1,5 +1,4 @@
-<% item_total = item.total_price %>
-<% @order_total += item_total %>
+
 
   <tr>
     <td>
@@ -17,7 +16,7 @@
       <%= item.quantity %>
     </td>
     <td>
-      <%= item_total %>
+      <%= item.quantity * item.total_price_cents/100 %>
     </td>
   </tr>
 
