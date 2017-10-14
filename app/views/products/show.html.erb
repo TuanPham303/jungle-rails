@@ -28,4 +28,23 @@
 
   </article>
 
+  <h2>All reviews</h2>
+  <ul class="list-group">
+    <%= render @product.comments %>
+  </ul>
+  
+
+  <% if current_user %>
+    <h2>Add a review:</h2>
+    <%= form_for [@product, @comment] do |form| %>
+      <p>
+        <%= form.text_area :body, class: "form-control" %> </br>
+        <%= form.label :Rate_this_product_out_of_5%>
+        <%= form.number_field :rating, :max => 5, :min => 0 %>
+      </p>
+      <p>
+        <%= form.submit :value => 'Submit', class: "btn btn-success" %>
+      </p>
+    <% end %>
+  <% end %>
 </section>
